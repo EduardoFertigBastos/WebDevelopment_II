@@ -13,6 +13,6 @@ class Script{
 
     public function __toString()
     {
-        return '<li class="'.$this->class.'">'.$this->text.'</li>';
+        return '<script>'.$this->src.'</script>';
     }
 }
