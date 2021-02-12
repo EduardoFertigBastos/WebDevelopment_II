@@ -28,8 +28,8 @@
     $ul->addLi($li1);
     $ul->addLi($li2);
 
-    $meta = new Meta(['teste' => 'aaaaaaa', 'bbbbbb' => 'ccccc']);
-    $meta->getMeta();
+    echo $metaCharset = new Meta(['teste' => 'aaaaaaa', 'bbbbbb' => 'ccccc']);
+    echo $aaa = new LinkHead(['teste' => 'aaaaaaa', 'bbbbbb' => 'ccccc']);
     echo $ul
     ?>
 </body>

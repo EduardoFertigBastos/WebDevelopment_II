@@ -15,7 +15,7 @@ class Ul{
 
     public function __toString()
     {
-        $ul = '<ul>';
+        $ul = '<ul class="' . $this->class . '">';
 
         foreach ($this->lista as $valor) {
             $ul .= $valor;

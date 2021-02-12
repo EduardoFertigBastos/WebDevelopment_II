@@ -2,17 +2,35 @@
 
 class Script{
     private $src;
+    private $attributes;
 
-    public function __construct($src) {
+    public function __construct($src, $attributes = []) {
         $this->src = $src;
+        $this->attributes = $attributes;
     }
 
     public function getScript(){
-        return '<script>'.$this->src.'</script>';
+        $script = '<script src="'.$this->src.'" ';
+
+        foreach ($this->attributes as $attribute => $val) {
+            $script .= $attribute . '="' . $val . '" ';
+        }
+        
+        $script .= "></script>";
+
+        return $script;
     }
 
     public function __toString()
     {
-        return '<script>'.$this->src.'</script>';
+        $script = '<script src="'.$this->src.'" ';
+
+        foreach ($this->attributes as $attribute => $val) {
+            $script .= $attribute . '="' . $val . '" ';
+        }
+        
+        $script .= "></script>";
+
+        return $script;
     }
 }
