@@ -4,7 +4,7 @@ class Body{
     private $lista = array();
     private $class;
 
-    public function __construct($class) {
+    public function __construct($class = '') {
         $this->class = $class;
     }
 

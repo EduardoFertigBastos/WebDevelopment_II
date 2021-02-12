@@ -4,7 +4,7 @@ class H1{
     private $text;
     private $class;
 
-    public function __construct($text, $class) {
+    public function __construct($text, $class = '') {
         $this->text  = $text;
         $this->class = $class;
     }

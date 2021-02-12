@@ -4,9 +4,8 @@ class Html{
     private $language;
     private $lista    = array();
 
-    public function __construct($language, $attributes) {
+    public function __construct($language) {
         $this->language   = $language;
-        $this->attributes = $attributes;
     }
 
     public function addElementToHtml($array) 
