@@ -3,7 +3,7 @@
 class Head{
     private $lista = array();
 
-    public function addTag($array) 
+    public function addElementToHead($array) 
     {
         $this->lista[] = $array;
     }

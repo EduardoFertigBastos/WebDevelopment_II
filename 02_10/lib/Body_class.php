@@ -8,7 +8,7 @@ class Body{
         $this->class = $class;
     }
 
-    public function addBody($array) 
+    public function addElementToBody($array) 
     {
         $this->lista[] = $array;
     }
