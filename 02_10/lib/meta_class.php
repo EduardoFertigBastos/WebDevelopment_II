@@ -1,9 +1,11 @@
 <?php
 
-class Meta{
+class Meta
+{
     private $attributes = array();
 
-    public function __construct($attributes) {
+    public function __construct($attributes) 
+    {
         $this->attributes = $attributes;
     }
 

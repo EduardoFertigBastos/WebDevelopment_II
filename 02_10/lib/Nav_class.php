@@ -1,10 +1,12 @@
 <?php
 
-class Nav{
+class Nav
+{
     private $lista = array();
     private $class;
 
-    public function __construct($class = '') {
+    public function __construct($class = '')
+    {
         $this->class = $class;
     }
 

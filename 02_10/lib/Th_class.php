@@ -1,11 +1,13 @@
 <?php
 
-class Th {
+class Th
+{
     private $class;
     private $colspan;
     private $rowspan;
 
-    public function __construct($class = '', $colspan = '1', $rowspan = '1') {
+    public function __construct($class = '', $colspan = '1', $rowspan = '1')
+    {
         $this->class   = $class;
         $this->colspan = $colspan;
         $this->rowspan = $rowspan;

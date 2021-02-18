@@ -1,10 +1,12 @@
 <?php
 
-class Ol{
+class Ol
+{
     private $lista = array();
     private $class;
 
-    public function __construct($class) {
+    public function __construct($class) 
+    {
         $this->class = $class;
     }
 

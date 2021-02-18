@@ -1,15 +1,18 @@
 <?php
 
-class H3{
+class H3
+{
     private $text;
     private $class;
 
-    public function __construct($text, $class = '') {
+    public function __construct($text, $class = '')
+    {
         $this->text  = $text;
         $this->class = $class;
     }
 
-    public function getH3(){
+    public function getH3()
+    {
         return '<h3 class="'.$this->class.'">'.$this->text.'</h3>';
     }
 

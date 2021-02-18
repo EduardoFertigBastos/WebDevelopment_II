@@ -1,12 +1,14 @@
 <?php
 
-class Form{
+class Form
+{
     private $lista = array();
     private $class;
     private $method;
     private $action;
 
-    public function __construct($class = '', $method, $action) {
+    public function __construct($class = '', $method, $action)
+    {
         $this->class  = $class;
         $this->method = $method;
         $this->action = $action;

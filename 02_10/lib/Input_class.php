@@ -1,6 +1,7 @@
 <?php
 
-class Input {
+class Input
+{
     private $type;
     private $id;
     private $name;

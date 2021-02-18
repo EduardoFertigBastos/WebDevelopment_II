@@ -1,6 +1,7 @@
 <?php
 
-class Article {
+class Article 
+{
     private $lista = array();
     private $class;
 

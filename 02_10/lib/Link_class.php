@@ -1,6 +1,7 @@
 <?php
 
-class Link {
+class Link
+{
     private $url;
     private $text;
     private $target;

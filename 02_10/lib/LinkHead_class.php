@@ -1,35 +1,37 @@
 <?php
 
-class LinkHead{
+class LinkHead
+{
     private $attributes = array();
 
-    public function __construct($attributes) {
+    public function __construct($attributes)
+    {
         $this->attributes = $attributes;
     }
 
     public function getLink()
     {
-        $Link = '<link ';
+        $link = '<link ';
 
         foreach ($this->attributes as $attribute => $val) {
-            $Link .= $attribute . '="' . $val . '" ';
+            $link .= $attribute . '="' . $val . '" ';
         }
         
-        $Link .= ">";
+        $link .= ">";
 
-        return $Link;
+        return $link;
     }
 
     public function __toString()
     {
-        $Link = '<link ';
+        $link = '<link ';
 
         foreach ($this->attributes as $attribute => $val) {
-            $Link .= $attribute . '="' . $val . '" ';
+            $link .= $attribute . '="' . $val . '" ';
         }
         
-        $Link .= ">";
+        $link .= ">";
         
-        return $Link;
+        return $link;
     }
 }

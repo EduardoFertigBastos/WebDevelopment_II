@@ -1,6 +1,7 @@
 <?php
 
-class Header{
+class Header
+{
     private $lista = array();
 
     public function addElementToHeader($array) 

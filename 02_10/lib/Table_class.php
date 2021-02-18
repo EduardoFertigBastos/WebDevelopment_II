@@ -1,10 +1,12 @@
 <?php
 
-class Table {
+class Table
+{
     private $lista = array();
     private $class;
 
-    public function __construct($class = '') {
+    public function __construct($class = '')
+    {
         $this->class  = $class;
     }
 

@@ -1,15 +1,18 @@
 <?php
 
-class Script{
+class Script
+{
     private $src;
     private $attributes;
 
-    public function __construct($src, $attributes = []) {
+    public function __construct($src, $attributes = []) 
+    {
         $this->src = $src;
         $this->attributes = $attributes;
     }
 
-    public function getScript(){
+    public function getScript()
+    {
         $script = '<script src="'.$this->src.'" ';
 
         foreach ($this->attributes as $attribute => $val) {

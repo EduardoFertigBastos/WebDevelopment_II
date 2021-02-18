@@ -1,10 +1,12 @@
 <?php
 
-class Html{
+class Html
+{
     private $language;
     private $lista    = array();
 
-    public function __construct($language) {
+    public function __construct($language)
+    {
         $this->language   = $language;
     }
 
