@@ -7,7 +7,7 @@ class Label
     private $name;
     private $class;
 
-    public function __construct($text, $id, $name, $class)
+    public function __construct($text, $id, $name, $class = '')
     {
         $this->text  = $text;
         $this->id    = $id;

@@ -7,7 +7,7 @@ class Input
     private $name;
     private $class;
 
-    public function __construct($type, $id, $name, $class)
+    public function __construct($type, $id, $name, $class = '')
     {
         $this->type  = $type;
         $this->id    = $id;
