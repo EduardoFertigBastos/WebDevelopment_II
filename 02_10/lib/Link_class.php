@@ -7,12 +7,12 @@ class Link
     private $target;
     private $class;
 
-    public function __construct($url, $text, $target, $class)
+    public function __construct($url, $text, $class, $target = '_blank')
     {
         $this->url      = $url;
         $this->text     = $text;
-        $this->target   = $target;
         $this->class    = $class;
+        $this->target   = $target;
     }
 
     public function getLink() 

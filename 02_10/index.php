@@ -43,13 +43,40 @@
      * Parte relacionada ao Body
      */
 
-    $titulo1 = new H1('Hello, world!');
+    $div_1 = new Div('card');
+    $article_1 = new Article('card-body');
+    $a_1 = new link('', 'Sign Up', 'float-right btn btn-outline-primary');
+    $h4_1 = new H4('Sign In', 'card-title mb-4 mt-1');
+
+    $form_1 = new Form('', '', '');
+
+    $div_2 = new Div('form-group');
+    $label_1 = new Div();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     $script1 = new Script('https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js', [
         'integrity'   => 'sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0',
         'crossorigin' => 'anonymous',
     ]);
 
+    ?>
+    
+    <?php
     $body->addElementToBody($titulo1);
     $body->addElementToBody($script1);
 
