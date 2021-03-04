@@ -7,11 +7,11 @@ class Form
     private $method;
     private $action;
 
-    public function __construct($class = '', $method, $action)
+    public function __construct($method, $action, $class = '')
     {
-        $this->class  = $class;
         $this->method = $method;
         $this->action = $action;
+        $this->class  = $class;
     }
 
     public function addElementToForms($array) 
