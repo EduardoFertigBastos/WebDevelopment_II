@@ -24,7 +24,7 @@ $viewport = new Meta([
     'content' => 'width=device-width, initial-scale=1'
 ]);
 
-$linkCss = new LinkHead([
+$linkNormalize = new LinkHead([
     'rel'  => 'stylesheet',
     'href' => 'assets/css/normalize.css',
 ]);
@@ -40,6 +40,7 @@ $title = new Title('Menu');
 
 $head->addElementToHead($charset);
 $head->addElementToHead($viewport);
+$head->addElementToHead($linkNormalize);
 $head->addElementToHead($linkCss);
 $head->addElementToHead($title);
 
@@ -106,7 +107,7 @@ for($x = 0; $x < 8; $x++) {
     $divButton = new Div('row');
     $divButton->addElementToDiv($button);
     
-    $aside->addElementToAside($aside);
+    $aside->addElementToAside($divButton);
 }
 
 
@@ -153,8 +154,8 @@ foreach ($tdData as $row) {
 
     $tr = new Tr();
     
-    foreach ($row as $col) {
-        $td = new Td($tdData[$row][$col]);
+    foreach ($row as $col) {;
+        $td = new Td($col);
         $tr->addElementToTr($td);
     }
 
@@ -194,7 +195,7 @@ $sectionTable = new Section('col-10 d-flex flex-column');
 $sectionTable->addElementToSection($table);
 $sectionTable->addElementToSection($navPagination);
 
-$main = new Main();
+$main = new Main('d-flex justify-content-start');
 $main->addElementToMain($aside);
 $main->addElementToMain($sectionTable);
 
@@ -209,6 +210,7 @@ $script1 = new Script('https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/j
     'crossorigin' => 'anonymous',
 ]);
 
+$body->addElementToBody($navMain);
 $body->addElementToBody($main);
 $body->addElementToBody($script1);
 
