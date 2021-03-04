@@ -36,7 +36,7 @@ $linkCss = new LinkHead([
     'crossorigin' => 'anonymous'
 ]);
 
-$title = new Title('Hello, world!');
+$title = new Title('Login');
 
 $head->addElementToHead($charset);
 $head->addElementToHead($viewport);
