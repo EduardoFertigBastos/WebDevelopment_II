@@ -2,26 +2,20 @@
 
 class Span
 {
-    private $lista = array();
+    private $text;
     private $class;
 
-    public function __construct($class = '')
+    public function __construct($text, $class = '')
     {
+        $this->text  = $text;
         $this->class = $class;
-    }
-
-    public function addElementToSpan($array) 
-    {
-        $this->lista[] = $array;
     }
 
     public function __toString()
     {
         $span = '<span class="'.$this->class.'">';
 
-        foreach ($this->lista as $valor) {
-            $span .= $valor;
-        }
+        $span .= $this->text; 
         
         $span .= "</span>";
 

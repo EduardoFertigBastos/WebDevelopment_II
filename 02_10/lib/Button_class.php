@@ -1,34 +1,39 @@
 <?php
 
-class Button
+class button
 {
-    private $type;
-    private $id;
     private $text;
-    private $name;
-    private $class;
+    private $attributes;
 
-    public function __construct($id, $name, $text, $class = '', $type = '')
+    public function __construct($text, $attributes = []) 
     {
-        $this->id    = $id;
-        $this->name  = $name;
-        $this->text  = $text;
-        $this->class = $class;
-        $this->type  = $type;
+        $this->text = $text;
+        $this->attributes = $attributes;
     }
 
-    public function getButton() 
+    public function getButton()
     {
-        return '<button type="'.$this->type.'" id="'.$this->id.'" 
-                    name="'.$this->name.'" class="'.$this->class.'">'
-                    . $this->text
-                . '</button';
+        $button = '<button  ';
+
+        foreach ($this->attributes as $attribute => $val) {
+            $button .= $attribute . '="' . $val . '" ';
+        }
+        
+        $button .= ">' . $this->text . '</button>";
+
+        return $button;
     }
 
-    public function __toString() 
+    public function __toString()
     {
-        return '<button type="'.$this->type.'" id="'.$this->id.'" 
-                    name="'.$this->name.'" class="'.$this->class.'">'
-                    . $this->text
-                . '</button';   }
+        $button = '<button  ';
+
+        foreach ($this->attributes as $attribute => $val) {
+            $button .= $attribute . '="' . $val . '" ';
+        }
+        
+        $button .= ">' . $this->text . '</button>";
+
+        return $button;
+    }
 }

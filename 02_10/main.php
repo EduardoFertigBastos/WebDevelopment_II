@@ -52,10 +52,13 @@ $head->addElementToHead($title);
  * NAV MENU MAIN
  */
 
+// Itens do Menu.
 $a[0] = new Link(',', 'Home', 'nav-link');
 $a[1] = new Link(',', 'Link', 'nav-link');
 $a[2] = new Link(',', 'disabled', 'nav-link disabled');
+$aNavbar = new Link('#', 'Navbar', 'navbar-brand', '');
 
+// Criação de Listas.
 $li = [];
 $ul = new Ul('navbar-nav mr-auto');
 for ($x = 0; 3 > sizeof($a); $x++) {
@@ -63,8 +66,39 @@ for ($x = 0; 3 > sizeof($a); $x++) {
     $ul->addLi($li);
 }
 
+// Criação de Span.
+$span = new Span('', 'navbar-toogler-icon');
+
+// Criação do Button.
+$button = new Button($span, [
+    'class' => 'navbar-toggler',
+    'type' => 'button',
+    'data-toggle' => 'collapse',
+    'data-target' => '#navbarSupportedContent',
+    'aria-controls' => 'navbarSupportedContent',
+    'aria-expanded' => 'false',
+    'aria-label' => 'Toggle navigation',
+]);
+
+// Criação da Div Navbar Collapse e adicionando a lista. 
 $divNavbarCollapse = new Div('collapse navbar-collapse');
 $divNavbarCollapse->addElementToDiv($ul);
+
+// Criação Nav e adicionando os elementos.
+$navMain = new Nav('navbar navbar-expand-lg navbar-dark bg-dark');
+$navMain->addElementToNav($aNavbar);
+$navMain->addElementToNav($button);
+$navMain->addElementToNav($divNavbarCollapse);
+
+
+/**
+ * Criação do Aside
+ */
+
+
+
+
+
 
 
 $script1 = new Script('https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js', [
