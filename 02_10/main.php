@@ -171,18 +171,32 @@ $table->addElementToTable($tBody);
  * Pagination 
  */
 
+// Array de dados pro menu de Pagination.
+$pgData = ['Previous', 1, 2, 3, 'Next'];
 
+$ulPagination = new Ul('pagination');
 
+foreach($pgData as $element) {
+    $a  = new Link('#',$element, 'page-link', '');
+    $li = new Li($a, 'page-item');
+    $ulPagination->addLi($li);
+}
 
+// Criação do NavPagination
+$navPagination = new Nav('d-flex justify-content-center');
+$navPagination->addElementToNav($ulPagination);
 
+/**
+ * Section Table.
+ */
 
-
-
-
- 
 $sectionTable = new Section('col-10 d-flex flex-column');
+$sectionTable->addElementToSection($table);
+$sectionTable->addElementToSection($navPagination);
 
-
+$main = new Main();
+$main->addElementToMain($aside);
+$main->addElementToMain($sectionTable);
 
 
 
@@ -195,7 +209,7 @@ $script1 = new Script('https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/j
     'crossorigin' => 'anonymous',
 ]);
 
-$body->addElementToBody($containerPrincipal);
+$body->addElementToBody($main);
 $body->addElementToBody($script1);
 
 
