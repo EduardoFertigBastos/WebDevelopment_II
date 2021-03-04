@@ -7,17 +7,16 @@ class Label
     private $name;
     private $class;
 
-    public function __construct($text, $id, $name, $class = '')
+    public function __construct($text, $id, $class = '')
     {
         $this->text  = $text;
         $this->id    = $id;
-        $this->name  = $name;
         $this->class = $class;
     }
 
     public function getLabel() 
     {
-        return '<label id="'.$this->id.'" name="'.$this->name.'" class="'.$this->class.'">'
+        return '<label for="'.$this->id.'" class="'.$this->class.'">'
                     . $this->text 
                 . '</label>';
     }

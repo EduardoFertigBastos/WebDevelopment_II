@@ -2,28 +2,25 @@
 
 class Input
 {
-    private $type;
-    private $id;
-    private $name;
     private $class;
+    private $attributes;
 
-    public function __construct($type, $id, $name, $class = '')
+    public function __construct($class = '', $attributes = [])
     {
-        $this->type  = $type;
-        $this->id    = $id;
-        $this->name  = $name;
-        $this->class = $class;
-    }
-
-    public function getInput() 
-    {
-        return '<input type="'.$this->type.'" id="'.$this->id.'" 
-                    name="'.$this->name.'" class="'.$this->class.'">';
+        $this->class      = $class;
+        $this->attributes = $attributes;
     }
 
     public function __toString() 
     {
-        return '<input type="'.$this->type.'" id="'.$this->id.'" 
-                    name="'.$this->name.'" class="'.$this->class.'">';
+        $input = '<input class="'.$this->class.'" ';
+
+        foreach ($this->attributes as $attribute => $val) {
+            $input .= $attribute . '="' . $val . '" ';
+        }
+        
+        $input .= ">";
+
+        return $input;
     }
 }

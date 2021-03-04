@@ -43,46 +43,87 @@ $head->addElementToHead($title);
  * Parte relacionada ao Body
  */
 
-$div_1     = new Div('card');
-$article_1 = new Article('card-body');
-$a_1       = new link('', 'Sign Up', 'float-right btn btn-outline-primary');
-$h4_1      = new H4('Sign In', 'card-title mb-4 mt-1');
-$form_1    = new Form('', '', '');
+$containerPrincipal = new Div('container');
+$container_2 = new Div('col-3');
+
+$divCard     = new Div('card mt-5');
+$article = new Article('card-body');
+$form    = new Form('', '', '');
 
 
-$div_2   = new Div('form-group');
-$label_1 = new Label('Seu e-mail', 'inputEmail', 'inputEmail');
-$input_1 = new Input('email', 'inputEmail', 'inputEmail', 'form-control');
+$div_formRow_email   = new Div('form-row mx-3 my-2');
+$div_formGroup_email = new Div('form-group');
+$label_email = new Label('Input Label', 'inputEmail');
+$input_email = new Input('form-control', [
+    'id'   => 'inputEmail',
+    'name' => 'inputEmail',
+    'type' => 'email',
+    'placeholder' => 'name@example.com',
+]);
 
-$div_2->addElementToDiv($label_1);
-$div_2->addElementToDiv($input_1);
-
-
-
-$div_3   = new Div('form-group');
-$a_2     = new Link('', 'Esqueceu o seu email?', 'float-right');
-$label_2 = new Label('Sua senha', 'inputSenha', 'inputSenha');
-$input_2 = new Input('password', 'inputSenha', 'inputSenha', 'form-control');
-
-$div_3->addElementToDiv($a_2);
-$div_3->addElementToDiv($label_2);
-$div_3->addElementToDiv($input_2);
-
-
-$div_4 = new Div('form-group');
-$div_5 = new Div('checkbox');
-$label_3 = new Label('Salvar Senha', 'check1', 'check1');
-$input_3 = new Input('checkbox', 'check1', 'check1');
-
-$div_5->addElementToDiv($label_3);
-$div_5->addElementToDiv($input_3);
-
-$div_4->addElementToDiv($div_5);
+$div_formGroup_email->addElementToDiv($label_email);
+$div_formGroup_email->addElementToDiv($input_email);
+$div_formRow_email->addElementToDiv($div_formGroup_email);
 
 
 
+$div_formRow_password   = new Div('form-row mx-3 my-2');
+$div_formGroup_password   = new Div('form-group');
+$label_senha = new Label('Password', 'inputSenha');
+$input_senha = new Input('form-control', [
+    'id'   => 'inputSenha',
+    'name' => 'inputSenha',
+    'type' => 'password', 
+    'placeholder' => 'Password' 
+]);
 
 
+
+$div_formRow_checkbox   = new Div('form-row mx-3 mt-3');
+$div_formGroup_checkbox   = new Div('form-group');
+$label_checkbox = new Label('Salvar Senha', 'check1', 'px-2');
+$input_checkbox = new Input('form-check-input', [
+    'id'   => 'check1',
+    'name' => 'check1',
+    'type' => 'checkbox'
+]);
+
+$div_formGroup_checkbox->addElementToDiv($input_checkbox);
+$div_formGroup_checkbox->addElementToDiv($label_checkbox);
+$div_formRow_checkbox->addElementToDiv($div_formGroup_checkbox);
+
+
+
+$div_formGroup_password->addElementToDiv($label_senha);
+$div_formGroup_password->addElementToDiv($input_senha);
+$div_formRow_password->addElementToDiv($div_formGroup_password);
+
+$div_formRow_signin   = new Div('form-row mx-3 my-2');
+$div_formGroup_signin = new Div('form-group');
+$a_signin     = new Link('aa', 'Sign In', 'btn btn-primary');
+
+$div_formGroup_signin->addElementToDiv($a_signin);
+$div_formRow_signin->addElementToDiv($div_formGroup_signin);
+
+
+$form->addElementToForms($div_formRow_email);
+$form->addElementToForms($div_formRow_password);
+$form->addElementToForms($div_formRow_checkbox);
+$form->addElementToForms($div_formRow_signin);
+
+$cardFooter = new Div('card-footer');
+$p1 = new P('New around here? Sign Up');
+$p2 = new P('Forgot Password?');
+
+$cardFooter->addElementToDiv($p1);
+$cardFooter->addElementToDiv($p2);
+
+$article->addElementToArticle($form);
+
+$divCard->addElementToDiv($article);
+$divCard->addElementToDiv($cardFooter);
+$container_2->addElementToDiv($divCard);
+$containerPrincipal->addElementToDiv($container_2);
 
 
 
@@ -98,14 +139,11 @@ $script1 = new Script('https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/j
     'crossorigin' => 'anonymous',
 ]);
 
-?>
-    
-    <?php
-    $body->addElementToBody($titulo1);
-    $body->addElementToBody($script1);
+$body->addElementToBody($containerPrincipal);
+$body->addElementToBody($script1);
 
 
-    $html->addElementToHtml($head);
-    $html->addElementToHtml($body);
+$html->addElementToHtml($head);
+$html->addElementToHtml($body);
 
-    echo $html;
+echo $html;
