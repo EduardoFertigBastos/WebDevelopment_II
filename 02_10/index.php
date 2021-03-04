@@ -43,13 +43,9 @@ $head->addElementToHead($title);
  * Parte relacionada ao Body
  */
 
-$containerPrincipal = new Div('container');
-$container_2 = new Div('col-3');
-
-$divCard     = new Div('card mt-5');
-$article = new Article('card-body');
-$form    = new Form('', '', '');
-
+/**
+ * Form-Row Email
+ */
 
 $div_formRow_email   = new Div('form-row mx-3 my-2');
 $div_formGroup_email = new Div('form-group');
@@ -66,6 +62,9 @@ $div_formGroup_email->addElementToDiv($input_email);
 $div_formRow_email->addElementToDiv($div_formGroup_email);
 
 
+/**
+ * Form-Row Senha
+ */
 
 $div_formRow_password   = new Div('form-row mx-3 my-2');
 $div_formGroup_password   = new Div('form-group');
@@ -77,7 +76,14 @@ $input_senha = new Input('form-control', [
     'placeholder' => 'Password' 
 ]);
 
+$div_formGroup_password->addElementToDiv($label_senha);
+$div_formGroup_password->addElementToDiv($input_senha);
+$div_formRow_password->addElementToDiv($div_formGroup_password);
 
+
+/**
+ * Form-Row Checkbox
+ */
 
 $div_formRow_checkbox   = new Div('form-row mx-3 mt-3');
 $div_formGroup_checkbox   = new Div('form-group');
@@ -93,10 +99,9 @@ $div_formGroup_checkbox->addElementToDiv($label_checkbox);
 $div_formRow_checkbox->addElementToDiv($div_formGroup_checkbox);
 
 
-
-$div_formGroup_password->addElementToDiv($label_senha);
-$div_formGroup_password->addElementToDiv($input_senha);
-$div_formRow_password->addElementToDiv($div_formGroup_password);
+/**
+ * Form-Row Sign In 
+ */
 
 $div_formRow_signin   = new Div('form-row mx-3 my-2');
 $div_formGroup_signin = new Div('form-group');
@@ -106,24 +111,65 @@ $div_formGroup_signin->addElementToDiv($a_signin);
 $div_formRow_signin->addElementToDiv($div_formGroup_signin);
 
 
+/**
+ * Forms
+ */
+
+$form    = new Form('', '', '');
+
 $form->addElementToForms($div_formRow_email);
 $form->addElementToForms($div_formRow_password);
 $form->addElementToForms($div_formRow_checkbox);
 $form->addElementToForms($div_formRow_signin);
 
-$cardFooter = new Div('card-footer');
-$p1 = new P('New around here? Sign Up');
-$p2 = new P('Forgot Password?');
 
-$cardFooter->addElementToDiv($p1);
-$cardFooter->addElementToDiv($p2);
+/**
+ * Card-Footer 
+ */
 
+$cardFooter          = new Div('card-footer bg-transparent');
+
+$div_cardFooter_row1 = new Div('row mx-3 my-2');
+$div_cardFooter_row1->addElementToDiv('New around here? Sign Up');
+
+$div_cardFooter_row2 = new Div('row mx-3 my-2');
+$div_cardFooter_row2->addElementToDiv('Forgot Password?');
+
+$cardFooter->addElementToDiv($div_cardFooter_row1);
+
+$cardFooter->addElementToDiv($div_cardFooter_row2);
+
+
+/**
+ * Article 
+ */
+ 
+$article = new Article('card-body');
 $article->addElementToArticle($form);
 
+
+/**
+ * divCard
+ */
+
+$divCard = new Div('card mt-5');
 $divCard->addElementToDiv($article);
 $divCard->addElementToDiv($cardFooter);
-$container_2->addElementToDiv($divCard);
-$containerPrincipal->addElementToDiv($container_2);
+
+
+/**
+ * divFlex 
+ */
+
+$divFlex = new Div('d-flex justify-content-center align-items-center');
+$divFlex->addElementToDiv($divCard);
+
+
+/**
+ * Container Principal  
+ */
+$containerPrincipal = new Div('container');
+$containerPrincipal->addElementToDiv($divFlex);
 
 
 
