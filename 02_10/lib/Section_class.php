@@ -1,31 +1,31 @@
 <?php
 
-class Aside 
+class Section
 {
     private $lista = array();
     private $class;
 
-    public function __construct($class = '') 
+    public function __construct($class = '')
     {
         $this->class = $class;
     }
 
-    public function addElementToAside($array) 
+    public function addElementToSection($array) 
     {
         $this->lista[] = $array;
     }
 
     public function __toString()
     {
-        $aside = '<aside class="'.$this->class.'">';
+        $section = '<section class="'.$this->class.'">';
 
         foreach ($this->lista as $valor) {
-            $aside .= $valor;
+            $section .= $valor;
         }
         
-        $aside .= "</aside>";
+        $section .= "</section>";
 
-        return $aside;
+        return $section;
     }
 
 }

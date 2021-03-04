@@ -95,6 +95,95 @@ $navMain->addElementToNav($divNavbarCollapse);
  * Criação do Aside
  */
 
+$aside = new Aside('col-2 d-flex flex-column');
+
+for($x = 0; $x < 8; $x++) {
+    
+    $button = new Button('Button', [
+        'class' => 'bg-secondary text-light col-12 py-3'
+    ]);
+
+    $divButton = new Div('row');
+    $divButton->addElementToDiv($button);
+    
+    $aside->addElementToAside($aside);
+}
+
+
+/**
+ * Table
+ */
+
+// Dados
+$thData = ['#', 'First', 'Last', 'Handle'];
+$tdData = [
+    [
+        '1', 
+        'Mark', 
+        'Otto', 
+        '@mdo'
+    ],
+    [
+        '2',
+        'Jacob',
+        'Thornton',
+        '@fat'
+    ],
+    [
+        '3',
+        'Larry',
+        'The bird',
+        '@twitter'
+    ],
+]; 
+
+// Criação do Cabeçalho
+$trCabecalho = new Tr();
+foreach ($thData as $thValue) {
+    $th = new Th($thValue);
+    $trCabecalho->addElementToTr($th); 
+}
+
+$tHead = new tHead();
+$tHead->addElementToTHead($trCabecalho);
+
+// Criação da Tabela de Dados
+$tBody = new TBody();
+foreach ($tdData as $row) {
+
+    $tr = new Tr();
+    
+    foreach ($row as $col) {
+        $td = new Td($tdData[$row][$col]);
+        $tr->addElementToTr($td);
+    }
+
+    $tBody->addElementToTBody($tr);
+}
+
+// Criação da Tabela em Definitivo
+$table = new Table('table table-striped');
+$table->addElementToTable($tHead);
+$table->addElementToTable($tBody);
+
+
+/**
+ * Pagination 
+ */
+
+
+
+
+
+
+
+
+
+ 
+$sectionTable = new Section('col-10 d-flex flex-column');
+
+
+
 
 
 

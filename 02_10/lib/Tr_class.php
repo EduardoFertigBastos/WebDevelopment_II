@@ -2,6 +2,7 @@
 
 class Tr 
 {
+    private $lista = array();
     private $class;
     private $colspan;
     private $rowspan;
@@ -11,6 +12,11 @@ class Tr
         $this->class   = $class;
         $this->colspan = $colspan;
         $this->rowspan = $rowspan;
+    }
+
+    public function addElementToTr($array) 
+    {
+        $this->lista[] = $array;
     }
 
     public function __toString()
