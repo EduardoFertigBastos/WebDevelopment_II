@@ -27,5 +27,24 @@ class Aside
 
         return $aside;
     }
+    
+    public function createListButton($class, $border) {
+        for($x = 0; $x < 9; $x++) {
+        
+            $button = new Button('Button', [
+                'class' => $class
+            ]);
+        
+            if ($x <> 0) {
+                $divButton = new Div('row ' . $border);
+            } else {
+                $divButton = new Div('row');
+            }
+        
+            $divButton->addElementToDiv($button);
+            
+            $this->addElementToAside($divButton);
+        }    
+    }
 
 }

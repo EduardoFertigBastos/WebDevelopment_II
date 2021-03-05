@@ -8,24 +8,6 @@ function dd($a){
     die();
 }
 
-function createListButton(&$aside, $class, $border) {
-    for($x = 0; $x < 9; $x++) {
-    
-        $button = new Button('Button', [
-            'class' => $class
-        ]);
-    
-        if ($x <> 0) {
-            $divButton = new Div('row ' . $border);
-        } else {
-            $divButton = new Div('row');
-        }
-    
-        $divButton->addElementToDiv($button);
-        
-        $aside->addElementToAside($divButton);
-    }    
-}
 
 function createListUL($ul, $array) {
     for ($x = 0;  $x < sizeof($array); $x++) {
@@ -166,8 +148,7 @@ $navMain->addElementToNav($divNavbarCollapse);
  */
 
 $aside = new Aside('col-2 d-flex flex-column');
-
-createListButton($aside, 'bg-secondary text-light col-12 py-3', 'border-top border-transparent');
+$aside->createListButton($aside, 'bg-secondary text-light col-12 py-3', 'border-top border-transparent');
 
 
 /**
