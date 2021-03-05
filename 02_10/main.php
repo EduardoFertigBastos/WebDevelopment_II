@@ -8,34 +8,6 @@ function dd($a){
     die();
 }
 
-function createTable($table, $thData, $tdData) {
-    $trCabecalho = new Tr();
-
-    foreach ($thData as $thValue) {
-        $th = new Th($thValue);
-        $trCabecalho->addElementToTr($th); 
-    }
-    
-    $tHead = new tHead();
-    $tHead->addElementToTHead($trCabecalho);
-    
-    // Criação da Tabela de Dados
-    $tBody = new TBody();
-    foreach ($tdData as $row) {
-    
-        $tr = new Tr();
-        
-        foreach ($row as $col) {;
-            $td = new Td($col);
-            $tr->addElementToTr($td);
-        }
-    
-        $tBody->addElementToTBody($tr);
-    }
-    
-    $table->addElementToTable($tHead);
-    $table->addElementToTable($tBody);
-}
 
 function createPagination($ulPagination, $pgData) {
     foreach($pgData as $element) {
@@ -175,7 +147,7 @@ $tdData = [
 
 // Criação da Tabela em Definitivo
 $table = new Table('table table-striped');
-createTable($table, $thData, $tdData);
+$table->createTable($thData, $tdData);
 
 /**
  * Pagination 

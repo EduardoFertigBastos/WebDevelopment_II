@@ -28,4 +28,33 @@ class Table
         return $table;
     }
 
+    function createTable($thData, $tdData) {
+        $trCabecalho = new Tr();
+    
+        foreach ($thData as $thValue) {
+            $th = new Th($thValue);
+            $trCabecalho->addElementToTr($th); 
+        }
+        
+        $tHead = new tHead();
+        $tHead->addElementToTHead($trCabecalho);
+        
+        // Criação da Tabela de Dados
+        $tBody = new TBody();
+        foreach ($tdData as $row) {
+        
+            $tr = new Tr();
+            
+            foreach ($row as $col) {;
+                $td = new Td($col);
+                $tr->addElementToTr($td);
+            }
+        
+            $tBody->addElementToTBody($tr);
+        }
+        
+        $this->addElementToTable($tHead);
+        $this->addElementToTable($tBody);
+    }
+    
 }
