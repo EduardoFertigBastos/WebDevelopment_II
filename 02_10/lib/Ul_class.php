@@ -28,4 +28,12 @@ class Ul
         return $ul;
     }
 
+    public function createListUL($array) {
+        for ($x = 0;  $x < sizeof($array); $x++) {
+            $li = new Li($array[$x], 'nav-item');
+            $this->addLi($li);
+        }
+    }
+    
+
 }

@@ -8,14 +8,6 @@ function dd($a){
     die();
 }
 
-
-function createListUL($ul, $array) {
-    for ($x = 0;  $x < sizeof($array); $x++) {
-        $li = new Li($array[$x], 'nav-item');
-        $ul->addLi($li);
-    }
-}
-
 function createTable($table, $thData, $tdData) {
     $trCabecalho = new Tr();
 
@@ -115,8 +107,7 @@ $aNavbar = new Link('#', 'Navbar', 'navbar-brand', '');
 
 // Criação de Listas.
 $ul = new Ul('navbar-nav mr-auto');
-
-createListUL($ul, $a);
+$ul->createListUL($a);
 
 // Criação de Span.
 $span = new Span('', 'navbar-toogler-icon');
