@@ -8,6 +8,72 @@ function dd($a){
     die();
 }
 
+function createListButton(&$aside, $class, $border) {
+    for($x = 0; $x < 9; $x++) {
+    
+        $button = new Button('Button', [
+            'class' => $class
+        ]);
+    
+        if ($x <> 0) {
+            $divButton = new Div('row ' . $border);
+        } else {
+            $divButton = new Div('row');
+        }
+    
+        $divButton->addElementToDiv($button);
+        
+        $aside->addElementToAside($divButton);
+    }    
+}
+
+function createListUL($ul, $array) {
+    for ($x = 0;  $x < sizeof($array); $x++) {
+        $li = new Li($array[$x], 'nav-item');
+        $ul->addLi($li);
+    }
+}
+
+function createTable($table, $thData, $tdData) {
+    $trCabecalho = new Tr();
+
+    foreach ($thData as $thValue) {
+        $th = new Th($thValue);
+        $trCabecalho->addElementToTr($th); 
+    }
+    
+    $tHead = new tHead();
+    $tHead->addElementToTHead($trCabecalho);
+    
+    // Criação da Tabela de Dados
+    $tBody = new TBody();
+    foreach ($tdData as $row) {
+    
+        $tr = new Tr();
+        
+        foreach ($row as $col) {;
+            $td = new Td($col);
+            $tr->addElementToTr($td);
+        }
+    
+        $tBody->addElementToTBody($tr);
+    }
+    
+    $table->addElementToTable($tHead);
+    $table->addElementToTable($tBody);
+}
+
+function createPagination($ulPagination, $pgData) {
+    foreach($pgData as $element) {
+        $a  = new Link('#',$element, 'page-link', '');
+        $li = new Li($a, 'page-item');
+        $ulPagination->addLi($li);
+    }
+    
+    // Criação do NavPagination
+    $navPagination = new Nav('d-flex justify-content-center');
+    $navPagination->addElementToNav($ulPagination);
+}
 /**
  * Criação do HTML
  */
@@ -67,10 +133,8 @@ $aNavbar = new Link('#', 'Navbar', 'navbar-brand', '');
 
 // Criação de Listas.
 $ul = new Ul('navbar-nav mr-auto');
-for ($x = 0;  $x < sizeof($a); $x++) {
-    $li = new Li($a[$x], 'nav-item');
-    $ul->addLi($li);
-}
+
+createListUL($ul, $a);
 
 // Criação de Span.
 $span = new Span('', 'navbar-toogler-icon');
@@ -103,22 +167,7 @@ $navMain->addElementToNav($divNavbarCollapse);
 
 $aside = new Aside('col-2 d-flex flex-column');
 
-for($x = 0; $x < 8; $x++) {
-    
-    $button = new Button('Button', [
-        'class' => 'bg-secondary text-light col-12 py-3'
-    ]);
-
-    if ($x <> 0) {
-        $divButton = new Div('row border-top border-transparent');
-    } else {
-        $divButton = new Div('row');
-    }
-
-    $divButton->addElementToDiv($button);
-    
-    $aside->addElementToAside($divButton);
-}
+createListButton($aside, 'bg-secondary text-light col-12 py-3', 'border-top border-transparent');
 
 
 /**
@@ -148,36 +197,13 @@ $tdData = [
     ],
 ]; 
 
+
 // Criação do Cabeçalho
-$trCabecalho = new Tr();
 
-foreach ($thData as $thValue) {
-    $th = new Th($thValue);
-    $trCabecalho->addElementToTr($th); 
-}
-
-$tHead = new tHead();
-$tHead->addElementToTHead($trCabecalho);
-
-// Criação da Tabela de Dados
-$tBody = new TBody();
-foreach ($tdData as $row) {
-
-    $tr = new Tr();
-    
-    foreach ($row as $col) {;
-        $td = new Td($col);
-        $tr->addElementToTr($td);
-    }
-
-    $tBody->addElementToTBody($tr);
-}
 
 // Criação da Tabela em Definitivo
 $table = new Table('table table-striped');
-$table->addElementToTable($tHead);
-$table->addElementToTable($tBody);
-
+createTable($table, $thData, $tdData);
 
 /**
  * Pagination 
@@ -188,15 +214,8 @@ $pgData = ['Previous', 1, 2, 3, 'Next'];
 
 $ulPagination = new Ul('pagination');
 
-foreach($pgData as $element) {
-    $a  = new Link('#',$element, 'page-link', '');
-    $li = new Li($a, 'page-item');
-    $ulPagination->addLi($li);
-}
+createPagination($ulPagination, $pgData);
 
-// Criação do NavPagination
-$navPagination = new Nav('d-flex justify-content-center');
-$navPagination->addElementToNav($ulPagination);
 
 /**
  * Section Table.
