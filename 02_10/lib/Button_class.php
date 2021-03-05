@@ -19,7 +19,7 @@ class button
             $button .= $attribute . '="' . $val . '" ';
         }
         
-        $button .= ">' . $this->text . '</button>";
+        $button .= '>' . $this->text . '</button>';
 
         return $button;
     }
@@ -32,7 +32,7 @@ class button
             $button .= $attribute . '="' . $val . '" ';
         }
         
-        $button .= ">' . $this->text . '</button>";
+        $button .= '>' . $this->text . '</button>';
 
         return $button;
     }

@@ -9,7 +9,7 @@ class Th
 
     public function __construct($text, $class = '', $colspan = '1', $rowspan = '1')
     {
-        $this->class   = $text;
+        $this->text   = $text;
         $this->class   = $class;
         $this->colspan = $colspan;
         $this->rowspan = $rowspan;

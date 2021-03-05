@@ -1,6 +1,12 @@
 <?php
 require_once './lib/autoload.php';
 
+function dd($a){
+    echo '<pre>';
+    var_dump($a);
+    echo '</pre>';
+    die();
+}
 
 /**
  * Criação do HTML
@@ -30,9 +36,9 @@ $linkNormalize = new LinkHead([
 ]);
 
 $linkCss = new LinkHead([
-    'href'        => 'https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css',
+    'href'        => 'https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css',
     'rel'         => 'stylesheet',
-    'integrity'   => 'sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl',
+    'integrity'   => 'sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh',
     'crossorigin' => 'anonymous'
 ]);
 
@@ -54,15 +60,14 @@ $head->addElementToHead($title);
  */
 
 // Itens do Menu.
-$a[0] = new Link(',', 'Home', 'nav-link');
-$a[1] = new Link(',', 'Link', 'nav-link');
-$a[2] = new Link(',', 'disabled', 'nav-link disabled');
+$a[0] = new Link('', 'Home', 'nav-link');
+$a[1] = new Link('', 'Link', 'nav-link');
+$a[2] = new Link('', 'disabled', 'nav-link disabled');
 $aNavbar = new Link('#', 'Navbar', 'navbar-brand', '');
 
 // Criação de Listas.
-$li = [];
 $ul = new Ul('navbar-nav mr-auto');
-for ($x = 0; 3 > sizeof($a); $x++) {
+for ($x = 0;  $x < sizeof($a); $x++) {
     $li = new Li($a[$x], 'nav-item');
     $ul->addLi($li);
 }
@@ -104,7 +109,12 @@ for($x = 0; $x < 8; $x++) {
         'class' => 'bg-secondary text-light col-12 py-3'
     ]);
 
-    $divButton = new Div('row');
+    if ($x <> 0) {
+        $divButton = new Div('row border-top border-transparent');
+    } else {
+        $divButton = new Div('row');
+    }
+
     $divButton->addElementToDiv($button);
     
     $aside->addElementToAside($divButton);
@@ -140,6 +150,7 @@ $tdData = [
 
 // Criação do Cabeçalho
 $trCabecalho = new Tr();
+
 foreach ($thData as $thValue) {
     $th = new Th($thValue);
     $trCabecalho->addElementToTr($th); 
@@ -195,7 +206,7 @@ $sectionTable = new Section('col-10 d-flex flex-column');
 $sectionTable->addElementToSection($table);
 $sectionTable->addElementToSection($navPagination);
 
-$main = new Main('d-flex justify-content-start');
+$main = new Main('d-flex justify-content-between');
 $main->addElementToMain($aside);
 $main->addElementToMain($sectionTable);
 
