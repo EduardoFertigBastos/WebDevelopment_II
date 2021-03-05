@@ -35,5 +35,12 @@ class Ul
         }
     }
     
+    function createPagination($pgData) {
+        foreach($pgData as $element) {
+            $a  = new Link('#',$element, 'page-link', '');
+            $li = new Li($a, 'page-item');
+            $this->addLi($li);
+        }
+    }
 
 }

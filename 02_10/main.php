@@ -8,18 +8,6 @@ function dd($a){
     die();
 }
 
-
-function createPagination($ulPagination, $pgData) {
-    foreach($pgData as $element) {
-        $a  = new Link('#',$element, 'page-link', '');
-        $li = new Li($a, 'page-item');
-        $ulPagination->addLi($li);
-    }
-    
-    // Criação do NavPagination
-    $navPagination = new Nav('d-flex justify-content-center');
-    $navPagination->addElementToNav($ulPagination);
-}
 /**
  * Criação do HTML
  */
@@ -157,10 +145,11 @@ $table->createTable($thData, $tdData);
 $pgData = ['Previous', 1, 2, 3, 'Next'];
 
 $ulPagination = new Ul('pagination');
+$ulPagination->createPagination($pgData);
 
-createPagination($ulPagination, $pgData);
-
-
+// Criação do NavPagination
+$navPagination = new Nav('d-flex justify-content-center');
+$navPagination->addElementToNav($ulPagination);
 /**
  * Section Table.
  */
