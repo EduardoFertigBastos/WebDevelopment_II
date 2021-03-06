@@ -29,35 +29,15 @@ class Table
     }
 
     function createTable($thData, $tdData) {
-        require_once 'Tr_class.php';
-        require_once 'Th_class.php';
-        require_once 'Td_class.php';
-        require_once 'TBody_class.php';
-        require_once 'THead_class.php';
-        
-        $trCabecalho = new Tr();
-    
-        foreach ($thData as $thValue) {
-            $th = new Th($thValue);
-            $trCabecalho->addElementToTr($th); 
-        }
-        
+            
+
         $tHead = new tHead();
-        $tHead->addElementToTHead($trCabecalho);
+        $tHead->createRowTHead($thData);
         
         // Criação da Tabela de Dados
         $tBody = new TBody();
-        foreach ($tdData as $row) {
+        $tBody->createRowsTBody($tdData);
         
-            $tr = new Tr();
-            
-            foreach ($row as $col) {;
-                $td = new Td($col);
-                $tr->addElementToTr($td);
-            }
-        
-            $tBody->addElementToTBody($tr);
-        }
         
         $this->addElementToTable($tHead);
         $this->addElementToTable($tBody);

@@ -37,8 +37,6 @@ class Ul
     }
     
     function createPagination($pgData) {
-        require_once 'Link_class.php';
-        require_once 'Li_class.php';
 
         foreach($pgData as $element) {
             $a  = new Link('#',$element, 'page-link', '');

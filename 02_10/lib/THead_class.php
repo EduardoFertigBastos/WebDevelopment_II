@@ -28,4 +28,17 @@ class THead
         return $thead;
     }
 
+    public function createRowTHead($thData)
+    {
+        
+        $trCabecalho = new Tr();
+        
+        foreach ($thData as $thValue) {
+            $th = new Th($thValue);
+            $trCabecalho->addElementToTr($th); 
+        }
+        
+        $this->addElementToTHead($trCabecalho);
+    }
+    
 }

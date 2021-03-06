@@ -28,4 +28,19 @@ class TBody
         return $tbody;
     }
 
+    public function createRowsTBody($tdData) 
+    {
+
+        foreach ($tdData as $row) {
+        
+            $tr = new Tr();
+            
+            foreach ($row as $col) {;
+                $td = new Td($col);
+                $tr->addElementToTr($td);
+            }
+        
+            $this->addElementToTBody($tr);
+        }
+    }
 }
