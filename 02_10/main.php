@@ -99,7 +99,7 @@ $navMain->addElementToNav($divNavbarCollapse);
  */
 
 $aside = new Aside('col-2 d-flex flex-column');
-$aside->createListButton($aside, 'bg-secondary text-light col-12 py-3', 'border-top border-transparent');
+$aside->createListButton('bg-secondary text-light col-12 py-3', 'border-top border-transparent');
 
 
 /**
@@ -150,6 +150,8 @@ $ulPagination->createPagination($pgData);
 // Criação do NavPagination
 $navPagination = new Nav('d-flex justify-content-center');
 $navPagination->addElementToNav($ulPagination);
+
+
 /**
  * Section Table.
  */

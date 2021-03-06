@@ -29,6 +29,12 @@ class Table
     }
 
     function createTable($thData, $tdData) {
+        require_once 'Tr_class.php';
+        require_once 'Th_class.php';
+        require_once 'Td_class.php';
+        require_once 'TBody_class.php';
+        require_once 'THead_class.php';
+        
         $trCabecalho = new Tr();
     
         foreach ($thData as $thValue) {

@@ -1,6 +1,6 @@
 <?php
 
-class button
+class Button
 {
     private $text;
     private $attributes;
