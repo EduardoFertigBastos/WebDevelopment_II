@@ -2,13 +2,20 @@
 
 class Menu
 {
+    private $id;
     private $texto;
     private $acao;
 
-    public function __construct($texto, $acao)
+    public function __construct($id, $texto, $acao)
     {
+        $this->id = $id;
         $this->texto = $texto;
         $this->acao  = $acao;
+    }
+
+    public function getId()
+    {
+        return $this->id;
     }
 
     public function getTexto()
