@@ -176,6 +176,10 @@ $divFlex->addElementToDiv($divCard);
 $containerPrincipal = new Div('container');
 $containerPrincipal->addElementToDiv($divFlex);
 
+if ($_SESSION['erroLogin']) {
+    $containerPrincipal->addElementToDiv('<p> Falha na autenticação. Tente novamente. </p>');
+    $_SESSION['erroLogin'] = false;
+}
 
 
 
