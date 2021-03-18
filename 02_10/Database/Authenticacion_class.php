@@ -24,14 +24,12 @@ class Authenticacion
 
         $oUsuario = $stmt->fetchAll();
 
-        if (isset($_POST['entrar'])) {
-            if ($oUsuario != NULL) {
-                $_SESSION['usuarioLogado'] = true;
-                
-            } else {
-                $_SESSION['erroLogin'] = true;
-            }
+        if ($oUsuario != NULL) {
+            return true;
+        } else {
+            return false;
         }
+        
     }
 
 

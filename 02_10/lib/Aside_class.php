@@ -28,25 +28,24 @@ class Aside
         return $aside;
     }
     
-    public function createListButton($class, $border) {
+    public function createListButton($itemsMenu) {
         
-        for($x = 0; $x < 9; $x++) {
+        foreach($itemsMenu as $itemMenu) {
         
-            $button = new Button('Button', [
-                'class' => $class
-            ]);
-        
+            $itemMenu = new Link($itemMenu[0], $itemMenu[1], 'bg-secondary text-light col-12 py-3', '');
+            
 
-            if ($x <> 0) {
-                $divButton = new Div('row ' . $border);
+            if ($itemsMenu[0] == $itemMenu) {
+                $divButton = new Div('row text-center');
             } else {
-                $divButton = new Div('row');
+                $divButton = new Div('row text-center border-top border-transparent');
             }
         
-            $divButton->addElementToDiv($button);
+            $divButton->addElementToDiv($itemMenu);
             
             $this->addElementToAside($divButton);
-        }    
+        }   
+
     }
 
 }

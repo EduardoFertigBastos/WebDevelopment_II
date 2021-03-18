@@ -1,13 +1,6 @@
 <?php
 require_once './lib/autoload.php';
 
-function dd($a){
-    echo '<pre>';
-    var_dump($a);
-    echo '</pre>';
-    die();
-}
-
 /**
  * Criação do HTML
  */
@@ -98,8 +91,12 @@ $navMain->addElementToNav($divNavbarCollapse);
  * Criação do Aside
  */
 
+$conn = new Connection();
+$itemsMenu = $conn->select(' SELECT acao, texto
+                               FROM menu');
+
 $aside = new Aside('col-2 d-flex flex-column');
-$aside->createListButton('bg-secondary text-light col-12 py-3', 'border-top border-transparent');
+$aside->createListButton($itemsMenu);
 
 
 /**
@@ -107,27 +104,9 @@ $aside->createListButton('bg-secondary text-light col-12 py-3', 'border-top bord
  */
 
 // Dados
-$thData = ['#', 'First', 'Last', 'Handle'];
-$tdData = [
-    [
-        '1', 
-        'Mark', 
-        'Otto', 
-        '@mdo'
-    ],
-    [
-        '2',
-        'Jacob',
-        'Thornton',
-        '@fat'
-    ],
-    [
-        '3',
-        'Larry',
-        'The bird',
-        '@twitter'
-    ],
-]; 
+$thData = ['#', 'Nome', 'E-mail', 'Data de Cadastro'];
+$tdData = $conn->select(' SELECT id, nome, email, datacadastro
+                            FROM pessoa');
 
 
 // Criação do Cabeçalho

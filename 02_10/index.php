@@ -1,6 +1,5 @@
 <?php
-require_once './lib/autoload.php';
-
+require 'autoloads.php';
 
 /**
  * Criação do HTML
@@ -37,6 +36,8 @@ $linkCss = new LinkHead([
 ]);
 
 $title = new Title('Login');
+
+$conn = new Connection();
 
 $head->addElementToHead($charset);
 $head->addElementToHead($viewport);
@@ -110,9 +111,12 @@ $div_formRow_checkbox->addElementToDiv($div_formGroup_checkbox);
 
 $div_formRow_signin   = new Div('form-row mx-3 my-2');
 $div_formGroup_signin = new Div('form-group');
-$a_signin     = new Link('main.php', 'Sign In', 'btn btn-primary', '_self');
+$button_signin     = new Input('btn btn-primary', [
+    'type'  => 'Submit',
+    'Value' => 'Sign In'
+]);
 
-$div_formGroup_signin->addElementToDiv($a_signin);
+$div_formGroup_signin->addElementToDiv($button_signin);
 $div_formRow_signin->addElementToDiv($div_formGroup_signin);
 
 
@@ -120,7 +124,7 @@ $div_formRow_signin->addElementToDiv($div_formGroup_signin);
  * Forms
  */
 
-$form    = new Form('', '');
+$form    = new Form('POST', 'authentication.php');
 
 $form->addElementToForms($div_formRow_email);
 $form->addElementToForms($div_formRow_password);
@@ -176,7 +180,7 @@ $divFlex->addElementToDiv($divCard);
 $containerPrincipal = new Div('container');
 $containerPrincipal->addElementToDiv($divFlex);
 
-if ($_SESSION['erroLogin']) {
+if (isset($_SESSION['erroLogin'])) {
     $containerPrincipal->addElementToDiv('<p> Falha na autenticação. Tente novamente. </p>');
     $_SESSION['erroLogin'] = false;
 }
