@@ -25,8 +25,12 @@ class Authenticacion
         $oUsuario = $stmt->fetchAll();
 
         if ($oUsuario != NULL) {
+            $_SESSION['login'] = true;
+
             return true;
         } else {
+            $_SESSION['login'] = false;
+            
             return false;
         }
         

@@ -56,6 +56,7 @@ $head->addElementToHead($title);
 $a[0] = new Link('', 'Home', 'nav-link');
 $a[1] = new Link('', 'Link', 'nav-link');
 $a[2] = new Link('', 'disabled', 'nav-link disabled');
+
 $aNavbar = new Link('#', 'Navbar', 'navbar-brand', '');
 
 // Criação de Listas.
@@ -63,7 +64,7 @@ $ul = new Ul('navbar-nav mr-auto');
 $ul->createListUL($a);
 
 // Criação de Span.
-$span = new Span('', 'navbar-toogler-icon');
+$span = new Span(null, 'navbar-toogler-icon');
 
 // Criação do Button.
 $button = new Button($span, [
@@ -76,9 +77,11 @@ $button = new Button($span, [
     'aria-label' => 'Toggle navigation',
 ]);
 
+$a[4] = new Link('logoff.php', 'Sair', 'btn btn-warning', '');
 // Criação da Div Navbar Collapse e adicionando a lista. 
 $divNavbarCollapse = new Div('collapse navbar-collapse');
 $divNavbarCollapse->addElementToDiv($ul);
+$divNavbarCollapse->addElementToDiv($a[4]);
 
 // Criação Nav e adicionando os elementos.
 $navMain = new Nav('navbar navbar-expand-lg navbar-dark bg-dark');
