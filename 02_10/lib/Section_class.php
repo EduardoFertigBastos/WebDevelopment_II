@@ -3,11 +3,11 @@
 class Section
 {
     private $lista = array();
-    private $class;
+    private $attributes;
 
-    public function __construct($class = '')
+    public function __construct($attributes = []) 
     {
-        $this->class = $class;
+        $this->attributes = $attributes;
     }
 
     public function addElementToSection($array) 
@@ -17,13 +17,21 @@ class Section
 
     public function __toString()
     {
-        $section = '<section class="'.$this->class.'">';
+        
+        $section = '<section ';
 
+        foreach ($this->attributes as $attribute => $val) {
+            $section .= $attribute . '="' . $val . '" ';
+        }
+        
+        $section .= ">";
+ 
         foreach ($this->lista as $valor) {
             $section .= $valor;
         }
         
         $section .= "</section>";
+
 
         return $section;
     }

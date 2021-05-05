@@ -133,18 +133,48 @@ $ulPagination->createPagination($pgData);
 $navPagination = new Nav('d-flex justify-content-center');
 $navPagination->addElementToNav($ulPagination);
 
+// Section Buttons
+$divRight = new Div('col-10 d-flex flex-column');
 
+$sectionButtons        = new Section(['id' => 'sectionButtons', 'class' => 'my-2']);
+
+$buttonMostrarCadastro = new Button('Mostrar Formulário', [
+    'id'    => 'buttonMostrarCadastro',
+    'class' => 'btn btn-primary col-2 py-2'
+]);
+
+$buttonMostrarTabela   = new Button('Mostrar Tabela', [
+    'id'    => 'buttonMostrarTabela',
+    'class' => 'btn btn-primary col-2 py-2 ml-2'
+]);
+
+$buttonMostrarUpdate   = new Button('Mostrar UPDATE', [
+    'id' => 'buttonMostrarUpdate',
+    'class' => 'btn btn-primary col-2 py-2 ml-2'
+]);
+
+$sectionButtons->addElementToSection($buttonMostrarCadastro);
+$sectionButtons->addElementToSection($buttonMostrarTabela);
+$sectionButtons->addElementToSection($buttonMostrarUpdate);
+
+
+$divRight->addElementToDiv($sectionButtons);
 /**
  * Section Table.
  */
 
-$sectionTable = new Section('col-10 d-flex flex-column');
+$sectionTable = new Section([
+    'id'    => 'sectionTable'
+]);
+
 $sectionTable->addElementToSection($table);
 $sectionTable->addElementToSection($navPagination);
 
+$divRight->addElementToDiv($sectionTable);
+
 $main = new Main('d-flex justify-content-between');
 $main->addElementToMain($aside);
-$main->addElementToMain($sectionTable);
+$main->addElementToMain($divRight);
 
 
 
@@ -157,9 +187,19 @@ $script1 = new Script('https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/j
     'crossorigin' => 'anonymous',
 ]);
 
+$script2 = new Script('https://code.jquery.com/jquery-3.6.0.js', [
+    'integrity'   => 'sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=',
+    'crossorigin' => 'anonymous'
+]);
+
+$script3 = new Script('./assets/js/script.js');
+
+
 $body->addElementToBody($navMain);
 $body->addElementToBody($main);
 $body->addElementToBody($script1);
+$body->addElementToBody($script2);
+$body->addElementToBody($script3);
 
 
 $html->addElementToHtml($head);
