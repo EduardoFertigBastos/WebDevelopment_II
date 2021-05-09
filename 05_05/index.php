@@ -157,6 +157,15 @@ ini_set('display_errors', 0);
 
 // Concatena os caracteres pressionados.
 $_SESSION['calculadora'] = $_SESSION['calculadora'] . $_POST['button'];    
+$calculadora = new Calculadora();
+
+if (isset($_SESSION['calculadora'])) {
+
+    $calculadora->verificarApagar($_SESSION['calculadora']);
+    $calculadora->verificarApagarUm($_SESSION['calculadora']);
+    $calculadora->calcularResultado($_SESSION['calculadora']);
+    
+}
 
 $result = new Input('', [
     'type'  => 'text',
@@ -170,14 +179,7 @@ $vista = new Input('', [
     'id'    => 'vista',
 ]);
 
-$calculadora = new Calculadora();
 
-if (isset($_SESSION['calculadora'])) {
-
-    $calculadora->verificarApagar($_SESSION['calculadora']);
-    $calculadora->verificarApagarUm($_SESSION['calculadora']);
-    $calculadora->calcularResultado($_SESSION['calculadora']);
-}
 
 $form->addElementToForms($apagar);
 $form->addElementToForms($c);
