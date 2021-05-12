@@ -88,7 +88,7 @@ $div_formRow_password->addElementToDiv($div_formGroup_password);
 
 
 /**
- * Form-Row Checkbox
+ * Form-Row Checkboxw
  */
 
 $div_formRow_checkbox   = new Div('form-row mx-3 mt-3');
