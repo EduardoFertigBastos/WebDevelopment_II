@@ -1,10 +1,11 @@
 <?php
-require_once LAYOUTS . 'head.php';
-
+require_once './lib/autoload.php';
+$html =  new Html('pt-br');
+$head = new Head();
 if ($_SESSION['usuarioLogado']) {
-    require_once LAYOUTS . 'menu.php';
+    $menu = new Menu();
 
-    echo '<div class="container">';
+    $div = new Div('container');
     
     if (!isset($_GET['pg'])) {
         require_once 'home.php';
@@ -13,7 +14,6 @@ if ($_SESSION['usuarioLogado']) {
     }
     
     echo '</div>';
-    require_once LAYOUTS . 'footer.php';
     
 
 } else {
