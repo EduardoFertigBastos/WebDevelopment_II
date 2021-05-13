@@ -14,11 +14,10 @@ class MontaCrud {
 	public function __toString() {
 
         $response = "";
-        $html = new Div("container");
+        $html = new Div("container col-6");
 
         $header = new Div('row', null);
-        $header->addElementToDiv(new Div("col-10", new HeaderTitle($this->title, 'text-center')));
-        $header->addElementToDiv(new Div("col-2 text-center", "<a class='btn btn-info' href='?action=inserir'>Novo Produto</a>"));
+        $header->addElementToDiv(new Div("col-12", new HeaderTitle('Cadastro .Txt', 'text-center')));
         $html->addElementToDiv($header);
 
         $tableHead = new THead('');
@@ -27,7 +26,7 @@ class MontaCrud {
             $tableHeadRow->addElement(new TH('', "ID"));
             $tableHeadRow->addElement(new TH('', "Nome"));
             $tableHeadRow->addElement(new TH('', "Valor"));
-            $tableHeadRow->addElement(new TH('', "Quantidade em Estoque"));
+            $tableHeadRow->addElement(new TH('', "Estoque"));
             $tableHead->addElement($tableHeadRow);
         }
 
@@ -41,8 +40,9 @@ class MontaCrud {
             $tableBody->addElement($tableBodyRow);
         }
         
-        $html->addElementToDiv(new Table('', 'table table-dark', $tableHead, $tableBody, null));
-
+        $html->addElementToDiv(new Table('', 'table table-striped col-8', $tableHead, $tableBody, null));
+        $html->addElementToDiv(new Div("col-12 text-center", "<a class='btn btn-warning' href='?action=inserir'>Cadastrar</a>"));
+        
 		return "" . $html;
     }
 }

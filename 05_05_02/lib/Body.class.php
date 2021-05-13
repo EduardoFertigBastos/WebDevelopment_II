@@ -8,7 +8,7 @@ class Body {
 	}
 
 	public function __toString() {
-		$body = '<body>';
+		$body = '<body class="bg-light">';
 		foreach ($this->prop as $valor) {
 			$body .= $valor;
 		}

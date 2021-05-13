@@ -1,5 +1,5 @@
-1|Coca-Cola 200ml|2.5|150|
-2|Coca-Cola 350ml|3.5|200|
-3|Coca-Cola 1l|6.0|450|
-4|COCA COLA 2.5L|14.5|50|
-5|das|50 dwwd|5+|
+1|Marcondes|5|1|
+2|Fernando|10|2|
+3|Paulo|15|5|
+4|Osni|20|7|
+5|Maciel|15|8|

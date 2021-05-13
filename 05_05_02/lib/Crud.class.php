@@ -38,7 +38,7 @@ class Crud {
             }
             $tableBody->addElement($trContent);
         }
-        $html .= new Table('', 'table table-dark', $tableHead, $tableBody, null);
+        $html .= new Table('', 'table table-striped', $tableHead, $tableBody, null);
 
 		return $html;
 	}
