@@ -15,9 +15,9 @@ class MontaCrud {
 
         $response = "";
         $html = new Div("container col-6");
-
         $header = new Div('row', null);
         $header->addElementToDiv(new Div("col-12", new HeaderTitle('Cadastro .Txt', 'text-center')));
+        
         $html->addElementToDiv($header);
 
         $tableHead = new THead('');
