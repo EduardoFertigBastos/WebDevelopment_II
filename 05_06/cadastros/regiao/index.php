@@ -1,8 +1,12 @@
-<div class="row justify-content-center mt-2">
+<?php 
 
-    <div class="justify-content-center my-2">
-        <h1> &nbsp&nbsp Regiões &nbsp&nbsp </h1>
-    </div>
+$divgeral  = new Div('row justify-content-center mt-2');
+$divtitulo = new Div('row justify-content-center mt-2');
+$divtitulo->addElementToDiv(new H1('&nbsp&nbsp Regiões &nbsp&nbsp'));
+$divgeral->addElementToDiv($divtitulo);
+
+?>
+<div class="row justify-content-center mt-2">
 
     <div class="col-sm-12 col-md-8 col-lg-8 offset-sm-4 offset-md-2 offset-lg-2">
 

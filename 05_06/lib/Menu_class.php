@@ -54,7 +54,7 @@ class Menu
         $navMain->addElementToNav($button);
         $navMain->addElementToNav($divNavbarCollapse);
 
-        return $navMain;
+        return "" . $navMain;
     }
 
 }

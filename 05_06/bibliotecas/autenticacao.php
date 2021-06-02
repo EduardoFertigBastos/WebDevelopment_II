@@ -1,4 +1,6 @@
 <?php
+
+
     $sSql = "SELECT *
                FROM usuario
               WHERE Email = :email

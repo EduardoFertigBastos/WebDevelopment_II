@@ -2,21 +2,28 @@
 require_once './lib/autoload.php';
 $html =  new Html('pt-br');
 $head = new Head();
+
+$html->addElementToHtml($head);
 if ($_SESSION['usuarioLogado']) {
     $menu = new Menu();
 
-    $div = new Div('container');
+    $div = new Div();
     
     if (!isset($_GET['pg'])) {
-        require_once 'home.php';
+        $home = new Home();
+        $div->addElementToDiv($home);
     } else {
-        require_once 'cadastros/' . $_GET['pg'] . '/index.php';
+        $html->addElementToHtml(require_once 'cadastros/' . $_GET['pg'] . '/index.php');
     }
     
-    echo '</div>';
     
+    $html->addElementToHtml($menu);
+    $html->addElementToHtml($div);    
+
 
 } else {
-    require_once LAYOUTS . 'login.php';
+    $html->addElementToHtml(require_once LAYOUTS . 'login.php');
+    
 }
 
+echo $html;

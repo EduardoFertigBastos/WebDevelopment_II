@@ -32,9 +32,8 @@ class Aside
         
         foreach($itemsMenu as $itemMenu) {
         
-            $itemMenu = new Link($itemMenu[0], $itemMenu[1], 'bg-secondary text-light col-12 py-3', '');
-            
-
+            $itemMenu = new Link('?pg='.$itemMenu[0], $itemMenu[1], 'bg-secondary text-light col-12 py-3', '');
+ 
             if ($itemsMenu[0] == $itemMenu) {
                 $divButton = new Div('row text-center');
             } else {

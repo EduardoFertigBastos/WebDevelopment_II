@@ -1,5 +1,5 @@
 <?php
-require 'autoloads.php';
+require_once './lib/autoload.php';
 
 /**
  * Criação do HTML
@@ -23,24 +23,23 @@ $viewport = new Meta([
     'content' => 'width=device-width, initial-scale=1'
 ]);
 
-$linkCss = new LinkHead([
+$linkNormalize = new LinkHead([
     'rel'  => 'stylesheet',
     'href' => 'assets/css/normalize.css',
 ]);
 
 $linkCss = new LinkHead([
-    'href'        => 'https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css',
+    'href'        => 'https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css',
     'rel'         => 'stylesheet',
-    'integrity'   => 'sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl',
+    'integrity'   => 'sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh',
     'crossorigin' => 'anonymous'
 ]);
 
-$title = new Title('Login');
-
-$conn = new Connection();
+$title = new Title('Menu');
 
 $head->addElementToHead($charset);
 $head->addElementToHead($viewport);
+$head->addElementToHead($linkNormalize);
 $head->addElementToHead($linkCss);
 $head->addElementToHead($title);
 
@@ -50,142 +49,132 @@ $head->addElementToHead($title);
  */
 
 /**
- * Form-Row Email
+ * NAV MENU MAIN
  */
 
-$div_formRow_email   = new Div('form-row mx-3 my-2');
-$div_formGroup_email = new Div('form-group');
-$label_email = new Label('Input Label', 'inputEmail');
-$input_email = new Input('form-control', [
-    'id'   => 'inputEmail',
-    'name' => 'inputEmail',
-    'type' => 'email',
-    'placeholder' => 'name@example.com',
+// Itens do Menu.
+$a[0] = new Link('', 'Home', 'nav-link');
+$a[1] = new Link('', 'Link', 'nav-link');
+$a[2] = new Link('', 'disabled', 'nav-link disabled');
+
+$aNavbar = new Link('#', 'Navbar', 'navbar-brand', '');
+
+// Criação de Listas.
+$ul = new Ul('navbar-nav mr-auto');
+$ul->createListUL($a);
+
+// Criação de Span.
+$span = new Span(null, 'navbar-toogler-icon');
+
+// Criação do Button.
+$button = new Button($span, [
+    'class' => 'navbar-toggler',
+    'type' => 'button',
+    'data-toggle' => 'collapse',
+    'data-target' => '#navbarSupportedContent',
+    'aria-controls' => 'navbarSupportedContent',
+    'aria-expanded' => 'false',
+    'aria-label' => 'Toggle navigation',
 ]);
 
-$div_formGroup_email->addElementToDiv($label_email);
-$div_formGroup_email->addElementToDiv($input_email);
-$div_formRow_email->addElementToDiv($div_formGroup_email);
+$a[4] = new Link('logoff.php', 'Sair', 'btn btn-warning', '');
+// Criação da Div Navbar Collapse e adicionando a lista. 
+$divNavbarCollapse = new Div('collapse navbar-collapse');
+$divNavbarCollapse->addElementToDiv($ul);
+$divNavbarCollapse->addElementToDiv($a[4]);
+
+// Criação Nav e adicionando os elementos.
+$navMain = new Nav('navbar navbar-expand-lg navbar-dark bg-dark');
+$navMain->addElementToNav($aNavbar);
+$navMain->addElementToNav($button);
+$navMain->addElementToNav($divNavbarCollapse);
 
 
 /**
- * Form-Row Senha
+ * Criação do Aside
  */
 
-$div_formRow_password   = new Div('form-row mx-3 my-2');
-$div_formGroup_password   = new Div('form-group');
-$label_senha = new Label('Password', 'inputSenha');
-$input_senha = new Input('form-control', [
-    'id'   => 'inputSenha',
-    'name' => 'inputSenha',
-    'type' => 'password', 
-    'placeholder' => 'Password' 
+$conn = new Connection();
+$itemsMenu = $conn->select(' SELECT acao, texto
+                               FROM menu');
+
+$aside = new Aside('col-2 d-flex flex-column');
+$aside->createListButton($itemsMenu);
+
+
+/**
+ * Table
+ */
+
+// Dados
+$thData = ['#', 'Nome', 'E-mail', 'Data de Cadastro', 'Ações'];
+$tdData = $conn->select(' SELECT id, nome, email, datacadastro
+                            FROM pessoa');
+
+
+// Criação do Cabeçalho
+
+
+// Criação da Tabela em Definitivo
+$table = new Table('table table-striped');
+$table->createTable($thData, $tdData);
+
+/**
+ * Pagination 
+ */
+
+// Array de dados pro menu de Pagination.
+$pgData = ['Previous', 1, 2, 3, 'Next'];
+
+$ulPagination = new Ul('pagination');
+$ulPagination->createPagination($pgData);
+
+// Criação do NavPagination
+$navPagination = new Nav('d-flex justify-content-center');
+$navPagination->addElementToNav($ulPagination);
+
+// Section Buttons
+$divRight = new Div('col-10 d-flex flex-column');
+
+$sectionButtons        = new Section(['id' => 'sectionButtons', 'class' => 'my-2']);
+
+$buttonMostrarCadastro = new Button('Mostrar Formulário', [
+    'id'    => 'buttonMostrarCadastro',
+    'class' => 'btn btn-primary col-2 py-2'
 ]);
 
-$div_formGroup_password->addElementToDiv($label_senha);
-$div_formGroup_password->addElementToDiv($input_senha);
-$div_formRow_password->addElementToDiv($div_formGroup_password);
-
-
-/**
- * Form-Row Checkboxw
- */
-
-$div_formRow_checkbox   = new Div('form-row mx-3 mt-3');
-$div_formGroup_checkbox   = new Div('form-group');
-$label_checkbox = new Label('Salvar Senha', 'check1', 'px-2');
-$input_checkbox = new Input('form-check-input', [
-    'id'   => 'check1',
-    'name' => 'check1',
-    'type' => 'checkbox'
+$buttonMostrarTabela   = new Button('Mostrar Tabela', [
+    'id'    => 'buttonMostrarTabela',
+    'class' => 'btn btn-primary col-2 py-2 ml-2'
 ]);
 
-$div_formGroup_checkbox->addElementToDiv($input_checkbox);
-$div_formGroup_checkbox->addElementToDiv($label_checkbox);
-$div_formRow_checkbox->addElementToDiv($div_formGroup_checkbox);
-
-
-/**
- * Form-Row Sign In 
- */
-
-$div_formRow_signin   = new Div('form-row mx-3 my-2');
-$div_formGroup_signin = new Div('form-group');
-$button_signin     = new Input('btn btn-primary', [
-    'type'  => 'Submit',
-    'Value' => 'Sign In'
+$buttonMostrarUpdate   = new Button('Mostrar UPDATE', [
+    'id' => 'buttonMostrarUpdate',
+    'class' => 'btn btn-primary col-2 py-2 ml-2'
 ]);
 
-$div_formGroup_signin->addElementToDiv($button_signin);
-$div_formRow_signin->addElementToDiv($div_formGroup_signin);
+$sectionButtons->addElementToSection($buttonMostrarCadastro);
+$sectionButtons->addElementToSection($buttonMostrarTabela);
+$sectionButtons->addElementToSection($buttonMostrarUpdate);
 
 
+$divRight->addElementToDiv($sectionButtons);
 /**
- * Forms
+ * Section Table.
  */
 
-$form    = new Form('POST', 'authentication.php');
+$sectionTable = new Section([
+    'id'    => 'sectionTable'
+]);
 
-$form->addElementToForms($div_formRow_email);
-$form->addElementToForms($div_formRow_password);
-$form->addElementToForms($div_formRow_checkbox);
-$form->addElementToForms($div_formRow_signin);
+$sectionTable->addElementToSection($table);
+$sectionTable->addElementToSection($navPagination);
 
+$divRight->addElementToDiv($sectionTable);
 
-/**
- * Card-Footer 
- */
-
-$cardFooter          = new Div('card-footer bg-transparent');
-
-$div_cardFooter_row1 = new Div('row mx-3 my-2');
-$div_cardFooter_row1->addElementToDiv('New around here? Sign Up');
-
-$div_cardFooter_row2 = new Div('row mx-3 my-2');
-$div_cardFooter_row2->addElementToDiv('Forgot Password?');
-
-$cardFooter->addElementToDiv($div_cardFooter_row1);
-
-$cardFooter->addElementToDiv($div_cardFooter_row2);
-
-
-/**
- * Article 
- */
- 
-$article = new Article('card-body');
-$article->addElementToArticle($form);
-
-
-/**
- * divCard
- */
-
-$divCard = new Div('card mt-5');
-$divCard->addElementToDiv($article);
-$divCard->addElementToDiv($cardFooter);
-
-
-/**
- * divFlex 
- */
-
-$divFlex = new Div('d-flex justify-content-center align-items-center');
-$divFlex->addElementToDiv($divCard);
-
-
-/**
- * Container Principal  
- */
-$containerPrincipal = new Div('container');
-$containerPrincipal->addElementToDiv($divFlex);
-
-if (isset($_SESSION['erroLogin'])) {
-    $containerPrincipal->addElementToDiv('<p> Falha na autenticação. Tente novamente. </p>');
-    $_SESSION['erroLogin'] = false;
-}
-
-
+$main = new Main('d-flex justify-content-between');
+$main->addElementToMain($aside);
+$main->addElementToMain($divRight);
 
 
 
@@ -198,8 +187,19 @@ $script1 = new Script('https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/j
     'crossorigin' => 'anonymous',
 ]);
 
-$body->addElementToBody($containerPrincipal);
+$script2 = new Script('https://code.jquery.com/jquery-3.6.0.js', [
+    'integrity'   => 'sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=',
+    'crossorigin' => 'anonymous'
+]);
+
+$script3 = new Script('./assets/js/script.js');
+
+
+$body->addElementToBody($navMain);
+$body->addElementToBody($main);
 $body->addElementToBody($script1);
+$body->addElementToBody($script2);
+$body->addElementToBody($script3);
 
 
 $html->addElementToHtml($head);

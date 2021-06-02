@@ -7,31 +7,27 @@ class Authenticacion
 
     public function authenticate($conn, $username, $password)
     {
-        $this->username = $username;
-        $this->password = $password;
-        
-        $sSql = " SELECT *
-                    FROM usuario
-                   WHERE Email = :email
-                     AND Senha = md5(:senha)";
-                            
+        $sSql = "SELECT *
+               FROM usuario
+              WHERE Email = :email
+                AND Senha = md5(:senha)";
+                        
         $stmt = $conn->prepare($sSql);
 
-        $stmt->bindParam(':email', $this->username);
-        $stmt->bindParam(':senha', $this->password);
+        $stmt->bindParam(':email', $_POST['email']);
+        $stmt->bindParam(':senha', $_POST['senha']);
         
         $stmt->execute();
 
         $oUsuario = $stmt->fetchAll();
 
-        if ($oUsuario != NULL) {
-            $_SESSION['login'] = true;
-
-            return true;
-        } else {
-            $_SESSION['login'] = false;
-            
-            return false;
+        if (isset($_POST['entrar'])) {
+            if ($oUsuario != NULL) {
+                $_SESSION['usuarioLogado'] = true;
+                
+            } else {
+                $_SESSION['erroLogin'] = true;
+            }
         }
         
     }

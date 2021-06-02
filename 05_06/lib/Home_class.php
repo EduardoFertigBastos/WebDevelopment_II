@@ -115,13 +115,14 @@ class Home
 
         $script3 = new Script('./assets/js/script.js');
 
-        $this->addElementToHome($main);
-        $this->addElementToHome($script1);
-        $this->addElementToHome($script2);
-        $this->addElementToHome($script3);
+        $div = new Div();
+        $div->addElementToDiv($main);
+        $div->addElementToDiv($script1);
+        $div->addElementToDiv($script2);
+        $div->addElementToDiv($script3);
 
 
-        return $this;
+        return ''.$div;
     }
 
 }

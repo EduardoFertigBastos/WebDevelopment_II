@@ -1,45 +1,154 @@
-<div class="container">
-    <div class="row">
+<?php
+/**
+ * Parte relacionada ao Body
+ */
+$title = new Title('Login');
 
-        <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+/**
+ * Form-Row Email
+ */
 
-            <div class="mt-5 bg-primary py-3 px-4">
-               
-                    <h5 class="text-center">Login</h5>
-                    <hr class="bg-light">
-                    
-                    <?php
-                        if ($_SESSION['erroLogin']) {
-                            echo '<p> Falha na autenticação. Tente novamente. </p>';
-                            $_SESSION['erroLogin'] = false;
-                        }
-                    ?>
+$div_formRow_email   = new Div('form-row mx-3 my-2');
+$div_formGroup_email = new Div('form-group');
+$label_email = new Label('Input Label', 'inputEmail');
+$input_email = new Input('form-control', [
+    'id'   => 'inputEmail',
+    'name' => 'inputEmail',
+    'type' => 'email',
+    'placeholder' => 'name@example.com',
+]);
 
-            
-                    <form method="post" action="">
-                        <div class="form-row">
-                            <div class="form-group col-sm-8 col-md-10 col-lg-8 mx-auto">
-                                <label for="email"> E-mail </label>
-                                <input type="email" name="email" class="form-control" id="email" placeholder="E-mail...">
-                            </div>
-                        </div>
+$div_formGroup_email->addElementToDiv($label_email);
+$div_formGroup_email->addElementToDiv($input_email);
+$div_formRow_email->addElementToDiv($div_formGroup_email);
 
-                        <div class="form-row">
-                            <div class="form-group col-sm-8 col-md-10 col-lg-8 mx-auto">
-                                <label for="senha"> Senha </label>
-                                <input type="password" name="senha" class="form-control" id="senha" placeholder="Senha...">
-                            </div>
-                        </div>
-                        <input type="submit" value="Entrar" name="entrar" class="btn btn-light col-12 py-2">
-                        
-                    </form>
+if ($_SESSION['erroLogin']) {
+    echo '<p> Falha na autenticação. Tente novamente. </p>';
+    $_SESSION['erroLogin'] = false;
+}
 
-                    <hr class="bg-light">                
 
-            </div>
+/**
+ * Form-Row Senha
+ */
 
-        </div>
+$div_formRow_password   = new Div('form-row mx-3 my-2');
+$div_formGroup_password   = new Div('form-group');
+$label_senha = new Label('Password', 'inputSenha');
+$input_senha = new Input('form-control', [
+    'id'   => 'inputSenha',
+    'name' => 'inputSenha',
+    'type' => 'password', 
+    'placeholder' => 'Password' 
+]);
 
-    </div>
-    
-</div>
+$div_formGroup_password->addElementToDiv($label_senha);
+$div_formGroup_password->addElementToDiv($input_senha);
+$div_formRow_password->addElementToDiv($div_formGroup_password);
+
+
+/**
+ * Form-Row Checkboxw
+ */
+
+$div_formRow_checkbox   = new Div('form-row mx-3 mt-3');
+$div_formGroup_checkbox   = new Div('form-group');
+$label_checkbox = new Label('Salvar Senha', 'check1', 'px-2');
+$input_checkbox = new Input('form-check-input', [
+    'id'   => 'check1',
+    'name' => 'check1',
+    'type' => 'checkbox'
+]);
+
+$div_formGroup_checkbox->addElementToDiv($input_checkbox);
+$div_formGroup_checkbox->addElementToDiv($label_checkbox);
+$div_formRow_checkbox->addElementToDiv($div_formGroup_checkbox);
+
+
+/**
+ * Form-Row Sign In 
+ */
+
+$div_formRow_signin   = new Div('form-row mx-3 my-2');
+$div_formGroup_signin = new Div('form-group');
+$button_signin     = new Input('btn btn-primary', [
+    'type'  => 'Submit',
+    'Value' => 'Sign In'
+]);
+
+$div_formGroup_signin->addElementToDiv($button_signin);
+$div_formRow_signin->addElementToDiv($div_formGroup_signin);
+
+
+/**
+ * Forms
+ */
+
+$form    = new Form('POST', 'index.php');
+
+$form->addElementToForms($div_formRow_email);
+$form->addElementToForms($div_formRow_password);
+$form->addElementToForms($div_formRow_checkbox);
+$form->addElementToForms($div_formRow_signin);
+
+
+/**
+ * Card-Footer 
+ */
+
+$cardFooter          = new Div('card-footer bg-transparent');
+
+$div_cardFooter_row1 = new Div('row mx-3 my-2');
+$div_cardFooter_row1->addElementToDiv('New around here? Sign Up');
+
+$div_cardFooter_row2 = new Div('row mx-3 my-2');
+$div_cardFooter_row2->addElementToDiv('Forgot Password?');
+
+$cardFooter->addElementToDiv($div_cardFooter_row1);
+
+$cardFooter->addElementToDiv($div_cardFooter_row2);
+
+
+/**
+ * Article 
+ */
+ 
+$article = new Article('card-body');
+$article->addElementToArticle($form);
+
+
+/**
+ * divCard
+ */
+
+$divCard = new Div('card mt-5');
+$divCard->addElementToDiv($article);
+$divCard->addElementToDiv($cardFooter);
+
+
+/**
+ * divFlex 
+ */
+
+$divFlex = new Div('d-flex justify-content-center align-items-center');
+$divFlex->addElementToDiv($divCard);
+
+
+/**
+ * Container Principal  
+ */
+$containerPrincipal = new Div('container');
+
+if (isset($_SESSION['erroLogin'])) {
+    $containerPrincipal->addElementToDiv('<p> Falha na autenticação. Tente novamente. </p>');
+    $_SESSION['erroLogin'] = false;
+}
+
+$script1 = new Script('https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js', [
+    'integrity'   => 'sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0',
+    'crossorigin' => 'anonymous',
+]);
+$containerPrincipal->addElementToDiv($divFlex);
+$containerPrincipal->addElementToDiv($script1);
+
+return $containerPrincipal;
