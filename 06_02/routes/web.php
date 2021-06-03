@@ -14,15 +14,3 @@ use Illuminate\Support\Facades\DB;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::get('/marcondes', function () {
-    $pessoas = DB::select('select * from pessoa');
-
-    return view('cadastro.listagem', ['pessoas' => $pessoas]);
-});
-
-Route
