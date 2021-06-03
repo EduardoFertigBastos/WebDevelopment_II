@@ -14,3 +14,12 @@ use Illuminate\Support\Facades\DB;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+Route::get('/contas',                   [ContasController::class, 'index']) ->name('contas.index');
+Route::get('/contas/create',            [ContasController::class, 'create'])->name('contas.create');
+Route::get('/contas/{conta_id}/show',   [ContasController::class, 'show'])  ->name('contas.show');
+Route::get('/contas/{conta_id}/edit',   [ContasController::class, 'edit'])  ->name('contas.edit');
+Route::get('/contas/{conta_id}/delete', [ContasController::class, 'delete'])->name('contas.delete');
+
+Route::post('/contas',                  [ContasController::class, 'store']) ->name('contas.store');
+Route::post('/contas/update',           [ContasController::class, 'update'])->name('contas.update');
