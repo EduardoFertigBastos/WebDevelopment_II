@@ -75,7 +75,7 @@ class ContasController extends Controller
     public function update(Request $request, int $id)
     {
         try {
-            Conta::where('id', $id)->update($request->all());
+            Conta::where('id', $id)->update($request->except('_token'));
 
             return redirect()->route('contas.index');
         } catch (Exception $e) {
